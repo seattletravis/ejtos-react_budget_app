@@ -8,23 +8,25 @@ const BudgetTotal = (props) => {
     let spentSoFar = expenses.reduce((sum, expense)=>{
         return sum + expense.quantity}, 0)
     
-    const [budgetTotal, setBudgetTotal] = useState(2000)
-    
+    const [budgetTotal, setBudgetTotal] = useState(0)
+    // function handleChange(){
+    //     setBudgetTotal(this.value)
+    // }
 
 
     return (
         <div className="budget">
-            <div>Total Budget: {budgetTotal}</div>
             <div>
                 {/* <div>Total Budget: {budgetTotal}</div> */}
                 <label>
                     Total Budget: 
-                    {/* <input 
+                    <input 
                         type="number"
                         value={budgetTotal}
-                        onChange={this.handleChange}             
-                    /> */}
+                        onChange={(e)=>{setBudgetTotal(e.target.value)}}             
+                    />
                 </label>
+                {/* <div>Total Budget: £{budgetTotal}</div> */}
                 <div>Budget Remaining: £{budgetTotal - spentSoFar}</div>
                 <div>Spent So Far: £{spentSoFar}</div>
             </div>
