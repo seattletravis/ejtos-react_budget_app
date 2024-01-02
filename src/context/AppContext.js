@@ -6,7 +6,7 @@ export const AppReducer = (state, action) => {
     switch (action.type) {
         case 'ADD_TEN':
             state.expenses.map((expense)=>{
-                if(expense.name ===action.payload.name){
+                if(expense.name === action.payload.name){
                     expense.quantity += 10
                 }
                 new_expenses.push(expense)
@@ -47,8 +47,6 @@ export const AppReducer = (state, action) => {
                 return {
                     ...state,
                 };
-
-
 
             case 'RED_QUANTITY':
                 state.expenses.map((expense)=>{

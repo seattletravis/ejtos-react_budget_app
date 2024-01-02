@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const Location = () => {
-  const {dispatch } = useContext(AppContext);
+  const { dispatch } = useContext(AppContext);
 
     const changeLocation = (val)=>{
             dispatch({

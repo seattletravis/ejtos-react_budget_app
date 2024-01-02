@@ -1,18 +1,25 @@
-import React, { useState } from "react"
+import React, { useContext, useState } from "react"
+import { AppContext } from '../context/AppContext';
 
-const BudgetTotal = () => {
+const BudgetTotal = (props) => {
 
-    const budgetTotal = useState(2000)
-    const budgetRemaining = useState(2000)
-    const budgetSpent = useState(0)
-
+    const {expenses } = useContext(AppContext)
+        
+    let spentSoFar = expenses.reduce((sum, expense)=>{
+        return sum + expense.quantity}, 0)
     
+    const [budgetTotal, setBudgetTotal] = useState(2000)
+    // const [budgetRemaining, setBudgetRemaining] = useState(0)
+    // const [budgetSpent, setBudgetSpent] = useState(0)
+
 
     return (
-        <div>
-            <div>Budget Total: £{budgetTotal}</div>
-            <div>Budget Remaining: £{budgetRemaining}</div>
-            <div>Budget Spent So Far: £{budgetSpent}</div>
+        <div className="budget">
+            <div>
+                <div>Total Budget: {budgetTotal}</div>
+                <div>Budget Remaining: {budgetTotal - spentSoFar}</div>
+                <div>Spent So Far: {spentSoFar}</div>
+            </div>
         </div>
     )
 }
