@@ -31,7 +31,7 @@ const ExpenseItem = (props) => {
     return (
         <tr>
             <td>{props.name}</td>
-            <td>{props.quantity}</td>
+            <td>£{props.quantity}</td>
             <td><FaTimesCircle size='2.2em' color="green" onClick={handleAddTen}></FaTimesCircle></td>
             <td><FaTimesCircle size='2.2em' color="red" onClick={handleRedTen}></FaTimesCircle></td>
         </tr>

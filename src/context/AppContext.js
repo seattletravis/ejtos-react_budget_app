@@ -96,7 +96,8 @@ const initialState = {
         { id: "Human Resources", name: 'Human Resources', quantity: 0},
         { id: "IT", name: 'IT', quantity: 0},
     ],
-    Location: '£'
+    Location: '£',
+
 };
 
 // 2. Creates the context this is the thing our components import and use to get the state
