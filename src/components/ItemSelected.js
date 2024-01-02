@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { AppContext } from '../context/AppContext';
 
 const ItemSelected = (props) => {
-    const { dispatch} = useContext(AppContext);
+    const { dispatch } = useContext(AppContext);
 
     const [name, setName] = useState('');
     const [quantity, setQuantity] = useState('');
@@ -33,17 +33,17 @@ const ItemSelected = (props) => {
         <div>
             <div className='row'>
 
-            <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
+                <div className="input-group mb-3" style={{ marginLeft: '2rem' }}>
                     <div className="input-group-prepend">
-                <label className="input-group-text" htmlFor="inputGroupSelect01">Items</label>
-                </div>
+                        <label className="input-group-text" htmlFor="inputGroupSelect01">Department</label>
+                    </div>
                   <select className="custom-select" id="inputGroupSelect01" onChange={(event) => setName(event.target.value)}>
                         <option defaultValue>Choose...</option>
-                        <option value="Shirt" name="Shirt"> Shirt</option>
-                <option value="Dress" name="Dress">Dress</option>
-                <option value="Jeans" name="Jeans">Jeans</option>
-                <option value="Dinner set" name="Dinner set">Dinner set</option>
-                <option value="Bags" name="Bags">Bags</option>
+                        <option value="Marketing" name="Marketing">Marketing</option>
+                        <option value="Finance" name="Finance">Finance</option>
+                        <option value="Sales" name="Sales">Sales</option>
+                        <option value="Human Resources" name="Human Resources">Human Resources</option>
+                        <option value="IT" name="IT">IT</option>
                   </select>
 
                     <div className="input-group-prepend" style={{ marginLeft: '2rem' }}>
