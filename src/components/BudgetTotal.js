@@ -17,8 +17,8 @@ const BudgetTotal = (props) => {
         <div className="budget">
             <div>
                 <div>Total Budget: {budgetTotal}</div>
-                <div>Budget Remaining: {budgetTotal - spentSoFar}</div>
-                <div>Spent So Far: {spentSoFar}</div>
+                <div>Budget Remaining: £{budgetTotal - spentSoFar}</div>
+                <div>Spent So Far: £{spentSoFar}</div>
             </div>
         </div>
     )
