@@ -9,8 +9,7 @@ const BudgetTotal = (props) => {
         return sum + expense.quantity}, 0)
     
     const [budgetTotal, setBudgetTotal] = useState(2000)
-    // const [budgetRemaining, setBudgetRemaining] = useState(0)
-    // const [budgetSpent, setBudgetSpent] = useState(0)
+
 
 
     return (
