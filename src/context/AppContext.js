@@ -4,6 +4,22 @@ import React, { createContext, useReducer } from 'react';
 export const AppReducer = (state, action) => {
     let new_expenses = [];
     switch (action.type) {
+        case 'ADD_TEN':
+            // let updatedqty = false
+            state.expenses.map((expense)=>{
+                if(expense.name ===action.payload.name){
+                    expense.quantity += 10
+                    // updatedqty = true
+                }
+                new_expenses.push(expense)
+                return true
+            })
+            state.expenses = new_expenses
+            action.type = "DONE"
+            return {
+                ...state,
+            };
+
         case 'ADD_QUANTITY':
             let updatedqty = false;
             state.expenses.map((expense)=>{

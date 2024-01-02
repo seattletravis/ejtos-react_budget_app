@@ -10,9 +10,9 @@ const BudgetTotal = () => {
 
     return (
         <div>
-            <div>Budget Total: {budgetTotal}</div>
-            <div>Budget Remaining: {budgetRemaining}</div>
-            <div>Budget Spent So Far: {budgetSpent}</div>
+            <div>Budget Total: £{budgetTotal}</div>
+            <div>Budget Remaining: £{budgetRemaining}</div>
+            <div>Budget Spent So Far: £{budgetSpent}</div>
         </div>
     )
 }
