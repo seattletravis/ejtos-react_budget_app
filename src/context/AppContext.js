@@ -6,7 +6,7 @@ export const AppReducer = (state, action) => {
     switch (action.type) {
         case 'ADD_TEN':
             if (state.spentSoFar == state.budgetTotal){
-                state.errorMessage = `Not enought funds to available`
+                state.errorMessage = `Not enought funds available`
             }
             state.expenses.map((expense)=>{
                 if(expense.name === action.payload.name && state.spentSoFar + 10 <= state.budgetTotal && state.budgetTotal > 0){

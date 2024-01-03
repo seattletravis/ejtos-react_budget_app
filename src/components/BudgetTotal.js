@@ -21,15 +21,16 @@ const BudgetTotal = () => {
 
     
     return (
-        <div className="budget">
+        <div className='alert alert-secondary'>
             <div>
                 <label>
-                    Total Budget: 
+                    Total Budget: £
                     <input 
                         type="number"
                         value={budgetTotal}
                         onChange={handleTotal}  
-                        max={20000}        
+                        max={20000}
+                        step={10}        
                     />
                 </label>
                 <div>
