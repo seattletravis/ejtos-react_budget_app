@@ -5,10 +5,14 @@ export const AppReducer = (state, action) => {
     let new_expenses = [];
     switch (action.type) {
         case 'ADD_TEN':
+            if (state.spentSoFar == state.budgetTotal){
+                state.errorMessage = `Not enought funds to available`
+            }
             state.expenses.map((expense)=>{
-                if(expense.name === action.payload.name && state.spentSoFar + 10 <= state.budgetTotal){
+                if(expense.name === action.payload.name && state.spentSoFar + 10 <= state.budgetTotal && state.budgetTotal > 0){
                     expense.quantity += 10
                     state.spentSoFar += 10
+                    state.errorMessage = `A-OK adding 10 to ${expense.name}`
                 }
                 new_expenses.push(expense)
                 return true
@@ -25,8 +29,12 @@ export const AppReducer = (state, action) => {
                 if(expense.name === action.payload.name && state.spentSoFar + action.payload.quantity <= state.budgetTotal) {
                     expense.quantity = expense.quantity + action.payload.quantity;
                     state.spentSoFar = state.spentSoFar + action.payload.quantity
+                    state.errorMessage = `Got it. Adding ${action.payload.quantity} to ${expense.name}`
                     updatedqty = true;
+                }else{
+                    state.errorMessage = `Not enough funds remaining to allocate £${action.payload.quantity}`
                 }
+
                 new_expenses.push(expense);
                 return true;
             })
@@ -41,6 +49,7 @@ export const AppReducer = (state, action) => {
                     if(expense.name === action.payload.name && expense.quantity >= 10) {
                         expense.quantity -= 10
                         state.spentSoFar -= 10
+                        state.errorMessage = `A-OK removing 10 from ${expense.name}`
                     }
                     new_expenses.push(expense)
                     return true
@@ -89,6 +98,7 @@ const initialState = {
     Location: '£',
     budgetTotal: 0,
     spentSoFar: 0,
+    errorMessage: "Hello World"
 
 
 };
@@ -114,7 +124,8 @@ state.CartValue = totalExpenses;
                 // CartValue: state.CartValue,
                 dispatch,
                 budgetTotal: state.budgetTotal,
-                spentSoFar: state.spentSoFar
+                spentSoFar: state.spentSoFar,
+                errorMessage: state.errorMessage
             }}
         >
             {props.children}
