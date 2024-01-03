@@ -22,11 +22,11 @@ const ItemSelected = (props) => {
                 payload: item,
             });
         } else {
-                dispatch({
-                    type: 'ADD_QUANTITY',
-                    payload: item,
-                });
-            }
+            dispatch({
+                type: 'ADD_QUANTITY',
+                payload: item,
+            });
+        }
     };
 
     return (

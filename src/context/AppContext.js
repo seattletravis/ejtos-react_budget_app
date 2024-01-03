@@ -6,7 +6,8 @@ export const AppReducer = (state, action) => {
     switch (action.type) {
         case 'ADD_TEN':
             state.expenses.map((expense)=>{
-                if(expense.name === action.payload.name){
+                if(expense.name === action.payload.name && expense.quantity + 10 <= state.budgetTotal){
+                    console.log(state.budgetTotal, state.spentSoFar)
                     expense.quantity += 10
                 }
                 new_expenses.push(expense)
@@ -62,25 +63,12 @@ export const AppReducer = (state, action) => {
                 return {
                     ...state,
                 };
-            case 'DELETE_ITEM':
-                state.expenses.map((expense)=>{
-                    if(expense.name === action.payload.name) {
-                        expense.quantity = 0;
-                    }
-                    new_expenses.push(expense);
-                    return true;
-                })
-                state.expenses = new_expenses;
-                action.type = "DONE";
+            case 'CHANGE_TOTAL':
+                state.budgetTotal = action.payload.budgetTotal
+                state.spentSoFar = action.payload.spentSoFar
                 return {
-                    ...state,
-                };
-            case 'CHG_LOCATION':
-                    action.type = "DONE";
-                    state.Location = action.payload;
-                    return {
-                        ...state
-                    }
+                    ...state
+                }
 
             default:
                 return state;
@@ -97,6 +85,9 @@ const initialState = {
         { id: "IT", name: 'IT', quantity: 0},
     ],
     Location: '£',
+    budgetTotal: 0,
+    spentSoFar: 0,
+
 
 };
 

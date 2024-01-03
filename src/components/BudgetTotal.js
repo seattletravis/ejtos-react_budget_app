@@ -1,32 +1,51 @@
 import React, { useContext, useState } from "react"
 import { AppContext } from '../context/AppContext';
 
-const BudgetTotal = (props) => {
+const BudgetTotal = () => {
+    const [budgetTotal, setBudgetTotal] = useState(0)
+    // const [spentSoFar, setSpentSoFar] = useState(0)
 
-    const {expenses } = useContext(AppContext)
-        
+    const { expenses } = useContext(AppContext)
     let spentSoFar = expenses.reduce((sum, expense)=>{
         return sum + expense.quantity}, 0)
+    // setSpentSoFar(spent)
+
+    const { dispatch } = useContext(AppContext)
+    const handleTotal = (e) => {
+        setBudgetTotal(e.target.value)
+        const item = {
+            budgetTotal: e.target.value,
+            spentSoFar: spentSoFar
+        }
+
+        dispatch({
+            type: 'CHANGE_TOTAL',
+            payload: item
+        })
+    }
+
+
     
-    const [budgetTotal, setBudgetTotal] = useState(0)
-    // function handleChange(){
-    //     setBudgetTotal(this.value)
+
+
+
+    // const handleTotal = (e) => {
+    //     setBudgetTotal(e.target.value)
     // }
 
-
+    
     return (
         <div className="budget">
             <div>
-                {/* <div>Total Budget: {budgetTotal}</div> */}
                 <label>
                     Total Budget: 
                     <input 
                         type="number"
                         value={budgetTotal}
-                        onChange={(e)=>{setBudgetTotal(e.target.value)}}             
+                        onChange={handleTotal}          
                     />
                 </label>
-                {/* <div>Total Budget: £{budgetTotal}</div> */}
+                <div>Total Budget: £{budgetTotal}</div>
                 <div>Budget Remaining: £{budgetTotal - spentSoFar}</div>
                 <div>Spent So Far: £{spentSoFar}</div>
             </div>
