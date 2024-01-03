@@ -54,7 +54,7 @@ const ItemSelected = (props) => {
                 <option value="Reduce" name="Reduce">Reduce</option>
                   </select>  
                   <span className="eco" style={{ marginLeft: '2rem', marginRight: '8px'}}></span>
-                    <label className="input-group-text">£</label>
+                    <label className="input-group-text">$</label>
                     <input
                         required='required'
                         type='number'

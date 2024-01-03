@@ -25,7 +25,7 @@ const BudgetTotal = () => {
         <div className='alert alert-secondary'>
             <div>
                 <label>
-                    Total Budget: £
+                    Total Budget: $
                     <input 
                         type="number"
                         value={budgetTotal}
@@ -35,9 +35,9 @@ const BudgetTotal = () => {
                     />
                 </label>
                 <div>
-                    <div>Total Budget: £{budgetTotal}</div>
-                    <div>Budget Remaining: £{budgetTotal - spentSoFar}</div>
-                    <div>Spent So Far: £{spentSoFar}</div>
+                    <div>Total Budget: ${budgetTotal}</div>
+                    <div>Budget Remaining: ${budgetTotal - spentSoFar}</div>
+                    <div>Spent So Far: ${spentSoFar}</div>
                 </div>
                 <div>Message from System: {errorMessage}</div>
             </div>
