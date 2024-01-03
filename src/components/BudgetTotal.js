@@ -28,7 +28,8 @@ const BudgetTotal = () => {
                     <input 
                         type="number"
                         value={budgetTotal}
-                        onChange={handleTotal}          
+                        onChange={handleTotal}  
+                        max={20000}        
                     />
                 </label>
                 <div>
