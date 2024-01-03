@@ -6,9 +6,9 @@ export const AppReducer = (state, action) => {
     switch (action.type) {
         case 'ADD_TEN':
             state.expenses.map((expense)=>{
-                if(expense.name === action.payload.name && expense.quantity + 10 <= state.budgetTotal){
-                    console.log(state.budgetTotal, state.spentSoFar)
+                if(expense.name === action.payload.name && state.spentSoFar + 10 <= state.budgetTotal){
                     expense.quantity += 10
+                    state.spentSoFar += 10
                 }
                 new_expenses.push(expense)
                 return true
@@ -22,8 +22,9 @@ export const AppReducer = (state, action) => {
         case 'ADD_QUANTITY':
             let updatedqty = false;
             state.expenses.map((expense)=>{
-                if(expense.name === action.payload.name) {
+                if(expense.name === action.payload.name && state.spentSoFar + action.payload.quantity <= state.budgetTotal) {
                     expense.quantity = expense.quantity + action.payload.quantity;
+                    state.spentSoFar = state.spentSoFar + action.payload.quantity
                     updatedqty = true;
                 }
                 new_expenses.push(expense);
@@ -39,6 +40,7 @@ export const AppReducer = (state, action) => {
                 state.expenses.map((expense)=>{
                     if(expense.name === action.payload.name && expense.quantity >= 10) {
                         expense.quantity -= 10
+                        state.spentSoFar -= 10
                     }
                     new_expenses.push(expense)
                     return true
@@ -53,6 +55,7 @@ export const AppReducer = (state, action) => {
                 state.expenses.map((expense)=>{
                     if(expense.name === action.payload.name && expense.quantity >= action.payload.quantity) {
                         expense.quantity = expense.quantity - action.payload.quantity;
+                        state.spentSoFar = state.spentSoFar - action.payload.quantity
                     }
                     expense.quantity = expense.quantity < 0 ? 0: expense.quantity;
                     new_expenses.push(expense);
@@ -65,7 +68,6 @@ export const AppReducer = (state, action) => {
                 };
             case 'CHANGE_TOTAL':
                 state.budgetTotal = action.payload.budgetTotal
-                state.spentSoFar = action.payload.spentSoFar
                 return {
                     ...state
                 }
@@ -109,9 +111,10 @@ state.CartValue = totalExpenses;
         <AppContext.Provider
             value={{
                 expenses: state.expenses,
-                CartValue: state.CartValue,
+                // CartValue: state.CartValue,
                 dispatch,
-                Location: state.Location
+                budgetTotal: state.budgetTotal,
+                spentSoFar: state.spentSoFar
             }}
         >
             {props.children}

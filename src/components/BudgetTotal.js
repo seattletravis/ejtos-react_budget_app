@@ -3,19 +3,20 @@ import { AppContext } from '../context/AppContext';
 
 const BudgetTotal = () => {
     const [budgetTotal, setBudgetTotal] = useState(0)
-    // const [spentSoFar, setSpentSoFar] = useState(0)
 
-    const { expenses } = useContext(AppContext)
-    let spentSoFar = expenses.reduce((sum, expense)=>{
-        return sum + expense.quantity}, 0)
-    // setSpentSoFar(spent)
+    // const { spentSoFar } = useContext(AppContext)
+    // let spentSoFar = expenses.reduce((sum, expense)=>{
+    //     return sum + expense.quantity}, 0)
 
-    const { dispatch } = useContext(AppContext)
+    const { dispatch, spentSoFar } = useContext(AppContext)
+
     const handleTotal = (e) => {
         setBudgetTotal(e.target.value)
+        
+        // setSpent(spentSoFar)
         const item = {
             budgetTotal: e.target.value,
-            spentSoFar: spentSoFar
+            // spentSoFar: spentSoFar
         }
 
         dispatch({
@@ -23,15 +24,6 @@ const BudgetTotal = () => {
             payload: item
         })
     }
-
-
-    
-
-
-
-    // const handleTotal = (e) => {
-    //     setBudgetTotal(e.target.value)
-    // }
 
     
     return (
